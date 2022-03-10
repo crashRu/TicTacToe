@@ -13,7 +13,7 @@ public class Game {
     public void game() throws IOException {
         String playerNameOne = Turn.getName("Player One");
         System.out.println("Если хотите сыграть с роботом напишите AI" +
-                "\nЕсли хотите остановить игру введите Stop");
+                "\nЕсли хотите остановить игру введите -1");
         String playerNameTwo = Turn.getName("Player Two");
         String win = " - Win!!!";
         table = InAndOutTable.initTable(table);
