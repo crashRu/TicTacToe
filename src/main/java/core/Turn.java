@@ -11,17 +11,13 @@ public class Turn {
             System.out.println("Enter X and Y (1..3):");
             x = scanner.nextInt() - 1;
             y = scanner.nextInt() - 1;
-            if (x < 0 || y < 0) {
-                Game.rsl = false;
-                break;
-            }
         } while (!Cheks.isCellValid(table, x, y));
         table[y][x] = symbol;
     }
 
-    public static void turnAI(char[][] table, String playerNameTwo) {
+    public static void turnAI(char[][] table, Player player) {
         int x, y;
-        if (playerNameTwo.equalsIgnoreCase("AI")) {
+        if (player.getName().equalsIgnoreCase("AI")) {
             Random random = new Random();
             do {
                 x = random.nextInt(3);
@@ -31,11 +27,5 @@ public class Turn {
         }else {
             turnHuman(table, 'o');
         }
-    }
-
-    public static String getName(String player) {
-        System.out.println("Введите имя: " + player);
-        return scanner.nextLine();
-
     }
 }

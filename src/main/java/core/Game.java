@@ -7,46 +7,60 @@ public class Game {
     final char SIGN_X = 'x';
     final char SIGN_O = 'o';
     char table[][] = new char[3][3];
-
+    static Scanner scanner = new Scanner(System.in);
     public static boolean rsl = true;
 
     public void game() throws IOException {
-        String playerNameOne = Turn.getName("Player One");
-        System.out.println("Если хотите сыграть с роботом напишите AI" +
-                "\nЕсли хотите остановить игру введите -1");
-        String playerNameTwo = Turn.getName("Player Two");
-        String win = " - Win!!!";
+        System.out.println("Введите имя первого игрока");
+        Player playerOne = new Player(scanner.nextLine());
+        System.out.println("Введите имя второго игрока"
+        + "\nЕсли хотите сыграть с ботом впишите AI");
+        Player playerTwo = new Player(scanner.nextLine());
         table = InAndOutTable.initTable(table);
         do {
             Turn.turnHuman(table, 'x');
             if (Cheks.checkWin(SIGN_X, table)) {
-                Write.write(playerNameOne + win);
+                Write.write(playerOne.getWinName());
+                System.out.println(playerOne.getWinName());
+                InAndOutTable.printTable(table);
+                if (isContinueGame()) {
+                    break;
+                }
                 table = InAndOutTable.initTable(table);
-                System.out.println(playerNameOne + win);
                 continue;
             }
             if (Cheks.isTableFull(table)) {
                 System.out.println("Sorry, DRAW!");
+                if (isContinueGame()) {
+                    break;
+                }
                 table = InAndOutTable.initTable(table);
                 continue;
             }
-            Turn.turnAI(table, playerNameTwo);
+            Turn.turnAI(table, playerTwo);
             InAndOutTable.printTable(table);
             if (Cheks.checkWin(SIGN_O, table)) {
-                Write.write(playerNameTwo + win);
+                Write.write(playerTwo.getWinName());
+                System.out.println(playerTwo.getWinName());
+                InAndOutTable.printTable(table);
+                if (isContinueGame()) {
+                    break;
+                }
                 table = InAndOutTable.initTable(table);
-                System.out.println(playerNameTwo + win);
                 continue;
             }
             if (Cheks.isTableFull(table)) {
                 System.out.println("Sorry, DRAW!");
+                if (isContinueGame()) {
+                    break;
+                }
                 continue;
             }
-        } while (isProceed());
+        } while (true);
     }
 
-    public static boolean isProceed() {
-        boolean rsl = Game.rsl;
-        return rsl;
+    public static boolean isContinueGame() {
+        System.out.println("Хотите продолжить игру? Yes для продолжения No для остановки");
+        return scanner.nextLine().equalsIgnoreCase("No");
     }
 }
