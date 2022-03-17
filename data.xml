@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GamePlay>
+    <Game>
+        <step num="0" playerId="0">0</step>
+        <step num="1" playerId="1">6</step>
+        <step num="2" playerId="0">1</step>
+        <step num="3" playerId="1">8</step>
+        <step num="4" playerId="0">2</step>
+        <step num="5" playerId="1">4</step>
+        <step num="6" playerId="0">0</step>
+        <step num="7" playerId="1">1</step>
+        <step num="8" playerId="0">3</step>
+        <step num="9" playerId="1">1</step>
+        <step num="10" playerId="0">6</step>
+        <step num="11" playerId="1">2</step>
+        <step num="12" playerId="0">6</step>
+    </Game>
+    <GameResult id="0" name="11" symbol="x"/>
+</GamePlay>
